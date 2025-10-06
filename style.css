@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fefefe;
+    color: #333;
+}
+
+header {
+    background: #2196F3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.queues {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.queue {
+    width: 25%;
+    min-height: 150px;
+    border: 2px solid #2196F3;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.queue h3 {
+    text-align: center;
+}
+
+.process {
+    background: #FF9800;
+    color: white;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    transition: all 1s ease;
+}
+
+.process-buttons button, button {
+    margin: 10px 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #2196F3;
+    color: white;
+    font-weight: bold;
+}
+
+.process-buttons button:hover, button:hover {
+    background: #1976D2;
+}
+
+.cpu {
+    margin-top: 30px;
+    border: 2px dashed #FF5722;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-height: 80px;
+}
+
+#cpuSlot {
+    min-height: 40px;
+    margin-top: 10px;
+}
+
+#output {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+
+footer {
+    background: #2196F3;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}

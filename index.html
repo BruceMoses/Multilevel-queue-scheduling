@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Level Queue Scheduling Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Multi-Level Queue Scheduling Simulation</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#queues">Queues</a>
+            <a href="#simulation">Simulation</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>What is Multi-Level Queue Scheduling?</h2>
+        <p>
+            Multi-Level Queue Scheduling divides processes into multiple queues based on priority or type. Each queue has its own scheduling rules. The CPU executes higher priority queues first.
+        </p>
+    </section>
+
+    <section id="queues">
+        <h2>Queues</h2>
+        <ul>
+            <li><strong>High Priority Queue:</strong> System processes</li>
+            <li><strong>Medium Priority Queue:</strong> Interactive processes</li>
+            <li><strong>Low Priority Queue:</strong> Batch processes</li>
+        </ul>
+    </section>
+
+    <section id="simulation">
+        <h2>Simulation</h2>
+        <p>Add processes to the queues:</p>
+
+        <div class="queues">
+            <div class="queue" id="highQueue">
+                <h3>High Priority</h3>
+            </div>
+            <div class="queue" id="mediumQueue">
+                <h3>Medium Priority</h3>
+            </div>
+            <div class="queue" id="lowQueue">
+                <h3>Low Priority</h3>
+            </div>
+        </div>
+
+        <div class="process-buttons">
+            <button onclick="addProcess('P1', 'high')">Add P1 (High)</button>
+            <button onclick="addProcess('P2', 'medium')">Add P2 (Medium)</button>
+            <button onclick="addProcess('P3', 'low')">Add P3 (Low)</button>
+            <button onclick="addProcess('P4', 'medium')">Add P4 (Medium)</button>
+            <button onclick="addProcess('P5', 'low')">Add P5 (Low)</button>
+        </div>
+
+        <button onclick="runScheduling()">Run Scheduling</button>
+
+        <div class="cpu">
+            <h3>CPU Execution</h3>
+            <div id="cpuSlot"></div>
+        </div>
+
+        <div id="output"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Multi-Level Queue Simulation</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
