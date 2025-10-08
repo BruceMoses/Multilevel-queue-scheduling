@@ -1,3 +1,5 @@
+let ganttData = [];
+let ganttChart = null;
 const queues = {
     high: document.getElementById('highQueue'),
     medium: document.getElementById('mediumQueue'),
@@ -25,7 +27,6 @@ async function runScheduling() {
     const cpuSlot = document.getElementById('cpuSlot');
     cpuSlot.innerHTML = "";
 
-    // Multi-Level Queue order: high -> medium -> low
     const order = processList
         .filter(p => p.queue === 'high')
         .concat(processList.filter(p => p.queue === 'medium'))
@@ -33,14 +34,27 @@ async function runScheduling() {
 
     document.getElementById('output').textContent = "Running processes...";
 
+    // Reset Gantt data
+    ganttData = [];
+    let currentTime = 0;
+
     for (let p of order) {
         await moveToCPU(p.element, cpuSlot);
-        await sleep(1000); // simulate CPU execution
+        ganttData.push({
+            process: p.name,
+            start: currentTime,
+            end: currentTime + 1
+        });
+        await sleep(1000);
         cpuSlot.innerHTML = "";
+        currentTime++;
     }
 
     document.getElementById('output').textContent = "All processes executed according to Multi-Level Queue Scheduling.";
-    
+
+    // Draw Gantt Chart
+    drawGanttChart();
+
     // Clear queues
     Object.values(queues).forEach(q => q.innerHTML = `<h3>${q.querySelector('h3').textContent}</h3>`);
     processList.length = 0;
