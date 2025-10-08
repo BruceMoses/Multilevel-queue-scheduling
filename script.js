@@ -75,3 +75,48 @@ async function moveToCPU(processDiv, cpuSlot) {
     cpuSlot.appendChild(processDiv);
     processDiv.style.transform = `translate(0,0)`;
 }
+function drawGanttChart() {
+    const ctx = document.getElementById('ganttChart').getContext('2d');
+
+    const labels = ganttData.map(d => d.process);
+    const data = ganttData.map(d => d.start);
+    const durations = ganttData.map(d => d.end - d.start);
+
+    if (ganttChart) ganttChart.destroy();
+
+    ganttChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Execution Time',
+                data: durations,
+                backgroundColor: ['#2196F3', '#FF9800', '#4CAF50', '#9C27B0', '#E91E63'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    title: { display: true, text: 'Time (units)' },
+                    beginAtZero: true
+                },
+                y: {
+                    title: { display: true, text: 'Processes' }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const proc = ganttData[context.dataIndex];
+                            return `Start: ${proc.start}, End: ${proc.end}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
